@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Mairena - Catálogo Digital Profesional</title>
+    <meta name="description"
+        content="Catálogo digital de ferretería con envío directo por WhatsApp. Herramientas, materiales y equipos de construcción.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar del carrito -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Carrito</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items" id="cart-items">
+                <!-- Items del carrito se cargarán aquí -->
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío:</span>
+                    <span id="shipping">Calculado al finalizar</span>
+                </div>
+                <div class="summary-row discount">
+                    <span>Descuento:</span>
+                    <span id="discount">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total-cart">$0.00</span>
+                </div>
+                <button class="btn-whatsapp-sidebar" id="whatsapp-sidebar-btn" disabled>
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+                <p class="whatsapp-info"><i class="fas fa-info-circle"></i> Se abrirá WhatsApp con tu pedido listo</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Overlay para sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header principal -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone-alt"></i> <strong>Tel:</strong> 5824-9298</span>
+                        <span><i class="fas fa-clock"></i> <strong>Horario:</strong> Lun-Sáb 8:00-18:00</span>
+                        <span><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> Ciudad</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="logo-text">
+                                <h1>Ferretería <span class="highlight">Mairena</span></h1>
+                                <p class="tagline">Soluciones en construcción</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-actions">
+                        <div class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-input" placeholder="Buscar productos..." autocomplete="off">
+                        </div>
+
+                        <div class="cart-icon-container">
+                            <button class="cart-icon-btn" id="open-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count" id="header-cart-count">0</span>
+                                <span class="cart-text">Carrito</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">Catálogo Digital <span class="highlight">Profesional</span></h2>
+                    <p class="hero-subtitle">Todo lo que necesitas en herramientas, materiales y equipo de construcción
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Envío a domicilio</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Calidad garantizada</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <span>Soporte profesional</span>
+                        </div>
+                    </div>
+                    <div class="whatsapp-cta">
+                        <div class="whatsapp-badge">
+                            <i class="fab fa-whatsapp"></i>
+                            <div class="whatsapp-info">
+                                <strong>Envía tu pedido directamente</strong>
+                                <span>WhatsApp: <strong>5824-9298</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://media.istockphoto.com/id/1409316216/es/foto/un-carrito-de-compras-junto-a-un-estante-de-una-ferreter%C3%ADa.webp?a=1&b=1&s=612x612&w=0&k=20&c=pj9ovDCcoi74BG_XVupfsawPFo8OEOJbB1VP5IZRIhc="
+                        alt="Herramientas profesionales">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-boxes"></i>
+                    <div class="stat-content">
+                        <h3>500+</h3>
+                        <p>Productos disponibles</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <div class="stat-content">
+                        <h3>24h</h3>
+                        <p>Entrega express</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-content">
+                        <h3>1000+</h3>
+                        <p>Clientes satisfechos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-award"></i>
+                    <div class="stat-content">
+                        <h3>15+</h3>
+                        <p>Años de experiencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros y búsqueda -->
+    <section class="products-header">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros <span class="highlight">Productos</span></h2>
+                <p>Selecciona entre nuestra amplia variedad de productos de ferretería</p>
+            </div>
+
+            <div class="filters-container">
+                <div class="filters">
+                    <button class="filter-btn active" data-category="all">
+                        <i class="fas fa-th-large"></i> Todos
+                    </button>
+                    <button class="filter-btn" data-category="electricas">
+                        <i class="fas fa-bolt"></i> Eléctricas
+                    </button>
+                    <button class="filter-btn" data-category="manuales">
+                        <i class="fas fa-tools"></i> Manuales
+                    </button>
+                    <button class="filter-btn" data-category="pintura">
+                        <i class="fas fa-paint-roller"></i> Pintura
+                    </button>
+                    <button class="filter-btn" data-category="materiales">
+                        <i class="fas fa-cube"></i> Materiales
+                    </button>
+                    <button class="filter-btn" data-category="seguridad">
+                        <i class="fas fa-hard-hat"></i> Seguridad
+                    </button>
+                </div>
+
+                <div class="view-controls">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <select class="sort-select" id="sort-select">
+                        <option value="default">Ordenar por</option>
+                        <option value="price-asc">Precio: Menor a mayor</option>
+                        <option value="price-desc">Precio: Mayor a menor</option>
+                        <option value="name-asc">Nombre: A-Z</option>
+                        <option value="name-desc">Nombre: Z-A</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de productos -->
+    <main class="container">
+        <div class="products-container">
+            <div class="products-grid" id="products-grid">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
+
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search fa-3x"></i>
+                <h3>No se encontraron productos</h3>
+                <p>Intenta con otros términos de búsqueda o categorías</p>
+            </div>
+        </div>
+
+        <!-- Paginación -->
+        <div class="pagination" id="pagination">
+            <button class="page-btn prev" disabled>
+                <i class="fas fa-chevron-left"></i> Anterior
+            </button>
+            <div class="page-numbers" id="page-numbers"></div>
+            <button class="page-btn next">
+                Siguiente <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Featured Brands -->
+    <section class="brands">
+        <div class="container">
+            <div class="section-header">
+                <h2>Marcas <span class="highlight">Destacadas</span></h2>
+                <p>Trabajamos con las mejores marcas del mercado</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-logo">BOSCH</div>
+                <div class="brand-logo">DEWALT</div>
+                <div class="brand-logo">MAKITA</div>
+                <div class="brand-logo">STANLEY</div>
+                <div class="brand-logo">3M</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Necesitas asesoramiento profesional?</h2>
+                <p>Nuestros expertos están listos para ayudarte a elegir los productos adecuados para tu proyecto</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="window.open('https://wa.me/58249298', '_blank')">
+                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('open-cart').click()">
+                        <i class="fas fa-shopping-cart"></i> Ver Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de producto -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-tools"></i>
+                        <div>
+                            <h3>Ferretería <span class="highlight">Mairena</span></h3>
+                            <p>Soluciones profesionales en construcción</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Más de 15 años proporcionando herramientas y materiales de calidad para profesionales y hogares.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>5824-9298</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>5824-9298</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>ventas@ferreteriamairena.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <p>Ciudad, Dirección Principal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Horarios</h4>
+                    <div class="schedule-item">
+                        <span>Lunes - Viernes</span>
+                        <span>8:00 - 18:00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Sábados</span>
+                        <span>8:00 - 14:00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Domingos</span>
+                        <span>Cerrado</span>
+                    </div>
+                    <h4 class="mt-30">Métodos de Pago</h4>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fas fa-money-bill-wave"></i>
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Catálogo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ofertas</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Nuevos Productos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Ferretería Mairena. Todos los derechos reservados.</p>
+                    <p>Desarrollado con <i class="fas fa-heart"></i> para el comercio local</p>
+                </div>
+                <div class="footer-links-bottom">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Aviso Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/58249298" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>¿Necesitas ayuda?</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
